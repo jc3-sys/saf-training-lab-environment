@@ -1,0 +1,7 @@
+---
+key_file_path: /etc/ssl/nginx-selfsigned.pem
+org_allowed_nginx_version: 1.23.1
+nginx_owner: "nginx"
+uses_pki: false
+sys_admin: ["root"]
+sys_admin_group: ["root"]
