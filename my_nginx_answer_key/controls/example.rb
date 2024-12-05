@@ -45,7 +45,21 @@ control 'nginx-shell-access' do
   impact 1.0
   title 'NGINX shell access'
   desc 'The NGINX shell access should be restricted to admin users.'
-  describe users.shells(/bash/).usernames do
-    it { should be_in input('admin_users')}
+  non_admin_users = users.shells(/bash/).usernames
+  describe "Shell access for non-admin users" do
+    it "should be removed." do
+      failure_message = "These non-admin should not have shell access: #{non_admin_users.join(", ")}"
+      expect(non_admin_users).to be_in(input('admin_users')), failure_message
+    end
+  end
+end
+
+control 'nginx-interview' do
+  impact 1.0
+  title 'NGINX interview'
+  desc 'NGINX admins should have documentation on security procedures.'
+
+  describe "Manual Review" do
+    skip "This control must be manually reviewed."
   end
 end

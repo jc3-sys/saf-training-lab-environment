@@ -12,7 +12,7 @@ supports:
 inputs:
   - name: nginx_version
     type: String
-    value: 1.27.0
+    value: 1.10.3
 
   - name: nginx_modules
     type: Array
