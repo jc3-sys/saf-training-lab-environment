@@ -5,12 +5,9 @@ git_dir = "/workspaces/saf-training-lab-environment/git_test/.git"
 
 # The following banches should exist
 describe git(git_dir) do
+  its('branches') { should include 'main' }
   its('branches') { should include 'testBranch' }
-  its('current_branch') { should cmp 'master' }
-end
-
-describe command("git --git-dir #{git_dir} branch") do
-  its('stdout') { should match /testBranch/ }
+  its('current_branch') { should cmp 'main' }
 end
 
 # What is the current branch
